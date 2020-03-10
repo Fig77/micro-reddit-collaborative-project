@@ -10,7 +10,7 @@ class UserTest < ActiveSupport::TestCase
   end
 
   test 'length needs to be less than 45' do
-    @user.name = 'Facundo IglesiasFacundo IglesiasFacundo IglesiasFacundo IglesiasFacundo IglesiasFacundo IglesiasFacundo IglesiasFacundo IglesiasFacundo IglesiasFacundo IglesiasFacundo IglesiasFacundo IglesiasFacundo IglesiasFacundo Iglesias'
-    assert @user.valid?
+    @user.name = 'Facundo'*45
+    assert_not @user.valid?
   end
 end

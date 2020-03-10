@@ -3,6 +3,7 @@ require 'test_helper'
 class PostsControllerTest < ActionDispatch::IntegrationTest
   setup do
     @post = posts(:one)
+    @user = User.first
   end
 
   test 'should get index' do
@@ -17,7 +18,7 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
 
   test 'should create post' do
     assert_difference('Post.count') do
-      post posts_url, params: { post: { idUser: @post.idUser, post: @post.post } }
+      post posts_url, params: { post: { idUser: @user.id, post: @post.post } }
     end
 
     assert_redirected_to post_url(Post.last)
@@ -34,7 +35,7 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'should update post' do
-    patch post_url(@post), params: { post: { idUser: @post.idUser, post: @post.post } }
+    patch post_url(@post), params: { post: { idUser: @user.id, post: @post.post } }
     assert_redirected_to post_url(@post)
   end
 

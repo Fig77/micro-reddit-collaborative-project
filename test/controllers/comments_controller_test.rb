@@ -3,6 +3,8 @@ require 'test_helper'
 class CommentsControllerTest < ActionDispatch::IntegrationTest
   setup do
     @comment = comments(:one)
+    @user = User.first
+    @post = Post.first
   end
 
   test 'should get index' do
@@ -17,7 +19,7 @@ class CommentsControllerTest < ActionDispatch::IntegrationTest
 
   test 'should create comment' do
     assert_difference('Comment.count') do
-      post comments_url, params: { comment: { content: @comment.content, idPost: @comment.idPost, idUser: @comment.idUser } }
+      post comments_url, params: { comment: { content: @comment.content, idPost: @post.id, idUser: @user.id } }
     end
 
     assert_redirected_to comment_url(Comment.last)
@@ -34,7 +36,7 @@ class CommentsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'should update comment' do
-    patch comment_url(@comment), params: { comment: { content: @comment.content, idPost: @comment.idPost, idUser: @comment.idUser } }
+    patch comment_url(@comment), params: { comment: { content: @comment.content, idPost: @post.id, idUser: @user.id } }
     assert_redirected_to comment_url(@comment)
   end
 
