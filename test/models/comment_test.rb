@@ -4,13 +4,13 @@ class CommentTest < ActiveSupport::TestCase
   def setup
     @user = User.new(name: 'Facundo Iglesias')
     @user.save
-    @post = Post.new(idUser:@user.id, post: 'Hello world')
+    @post = Post.new(idUser: @user.id, post: 'Hello world')
     @post.save
-    @test = Comment.new(idUser:@user.id, idPost:@post.id, post:'this is a post')
+    @comment = Comment.new(idUser: @user.id, idPost: @post.id, content: 'this is a post')
   end
 
   test 'is a valid user' do
-    assert @test.save
+    assert @comment.valid?
   end
 
   test 'comment must have a valid user' do

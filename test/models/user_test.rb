@@ -2,7 +2,7 @@ require 'test_helper'
 
 class UserTest < ActiveSupport::TestCase
   def setup
-   @user = User.new(name:'Facundo Iglesias')
+    @user = User.new(name: 'Facundo Iglesias')
   end
 
   test 'is a valid user' do
@@ -15,7 +15,7 @@ class UserTest < ActiveSupport::TestCase
   end
 
   test 'length needs to be less than 45' do
-    @user.name = 'Facundo'*45
+    @user.name = 'Facundo' * 45
     assert_not @user.valid?
   end
 end
