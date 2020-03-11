@@ -2,7 +2,7 @@ require 'test_helper'
 
 class CommentTest < ActiveSupport::TestCase
   def setup
-    @user = User.new(name: 'Facundo Iglesias')
+    @user = User.new(username: 'Facundo Iglesias')
     @user.save
     @post = Post.new(idUser: @user.id, post: 'Hello world')
     @post.save
