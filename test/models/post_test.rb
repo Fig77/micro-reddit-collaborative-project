@@ -2,7 +2,7 @@ require 'test_helper'
 
 class PostTest < ActiveSupport::TestCase
   def setup
-    @user = User.new(name: 'Facundo Iglesias')
+    @user = User.new(username: 'Facundo Iglesias')
     @user.save
     @post = Post.new(post: 'Hello World!', idUser: @user.id)
   end
